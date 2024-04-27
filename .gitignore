@@ -1,0 +1,6 @@
+chany_proyecto/*
+src/build/*
+src/dist/*
+img/*
+*.pyc
+*.spec
