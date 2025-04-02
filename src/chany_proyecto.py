@@ -27,7 +27,11 @@ class ChanyFrame ( wx.Frame ):
 		self.m_splitter1 = wx.SplitterWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D|wx.SP_LIVE_UPDATE|wx.SP_NO_XP_THEME )
 		self.m_splitter1.Bind( wx.EVT_IDLE, self.m_splitter1OnIdle )
 
-		self.m_panel31 = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.m_scrolledWindow1 = wx.ScrolledWindow( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow1.SetScrollRate( 5, 5 )
+		bSizer51 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_panel31 = wx.Panel( self.m_scrolledWindow1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.m_panel31.SetFont( wx.Font( 12, wx.FONTFAMILY_ROMAN, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Clarendon BT" ) )
 		self.m_panel31.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 
@@ -139,6 +143,12 @@ class ChanyFrame ( wx.Frame ):
 		self.m_panel31.SetSizer( bSizer2 )
 		self.m_panel31.Layout()
 		bSizer2.Fit( self.m_panel31 )
+		bSizer51.Add( self.m_panel31, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+		self.m_scrolledWindow1.SetSizer( bSizer51 )
+		self.m_scrolledWindow1.Layout()
+		bSizer51.Fit( self.m_scrolledWindow1 )
 		self.m_panel3 = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
@@ -154,7 +164,7 @@ class ChanyFrame ( wx.Frame ):
 		self.m_panel3.SetSizer( bSizer3 )
 		self.m_panel3.Layout()
 		bSizer3.Fit( self.m_panel3 )
-		self.m_splitter1.SplitVertically( self.m_panel31, self.m_panel3, 394 )
+		self.m_splitter1.SplitVertically( self.m_scrolledWindow1, self.m_panel3, 394 )
 		bSizer1.Add( self.m_splitter1, 1, wx.EXPAND, 5 )
 
 
